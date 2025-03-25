@@ -1,16 +1,16 @@
 :root {
-    --outline: 4px dashed red;
+    --outline: 4px dotted red;
     --outline-offset: 2px;
 }
 
 
-button:not([aria-label]):has(> svg:only-child),
+/* button:not([aria-label]):has(> svg:only-child),
 html:not([lang=ru]),
 body:has(:not(h1)),
 button:not([type]),
 img:not([alt]),
 img:not([width]),
-img:not([height]),
+img:not([height]), */
 time:not([date-time]) {
     outline: var(--outline);
     outline-offset: var(--outline-offset);
