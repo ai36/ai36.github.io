@@ -1,7 +1,10 @@
+
 :root {
     --debug-width: 4px;
     --debug-style: solid;
     --debug-color: red;
+
+    counter-reset: debug-counter;
 }
 
 head script[src]:not([defer]):not([type="module"]),
@@ -23,68 +26,114 @@ img:not([alt]) {
 
 head script[src]:not([defer]):not([type="module"])::before {
     content: "В секции head подключены ресурсы блокирующие рендеринг, рекомендуется использовать атрибут defer";
+    counter-increment: debug-counter;
 }
 
 html:not(:has(head > link[rel=icon]))::before {
     content: "В документе остутсвует favicon";
+    counter-increment: debug-counter;
 }
 
 a[target="_blank"]:is(:not([rel~="noopener"]), :not([rel~="noreferrer"]))::before {
     content: "Добавьте к ссылке на внешний документ атрибут rel='noopener noreferrer'";
+    counter-increment: debug-counter;
 }
 
 html:not(:has(head > link[rel=icon]))::before {
     content: "В документе остутсвует favicon";
+    counter-increment: debug-counter;
 }
 
 section:not(:has(h2))::before {
     content: "Секция не имеет заголовка h2";
+    counter-increment: debug-counter;
 }
 
 button:not([aria-label]):has(> svg:only-child)::before {
     content: "Кнопка не имеет текстового содержимого или доступного описания";
+    counter-increment: debug-counter;
 }
 
 body:has(:not(h1))::before {
     content: "Документ не имеет тега h1";
+    counter-increment: debug-counter;
 }
 
 button:not([type])::before {
     content: "Кнопка не имеет атрибута type";
+    counter-increment: debug-counter;
 }
 
 html:not([lang=ru])::before {
     content: "Атрибурт html lang содепржит значение отличное от ru";
+    counter-increment: debug-counter;
 }
 
 time:not([datetime])::before {
     content: "Использование тега time без атрибута datatime";
+    counter-increment: debug-counter;
 }
 
 :has(>img:not([width]))::before {
     content: "Есть изображения без атрибута height";
+    counter-increment: debug-counter;
 }
 
 :has(>img:not([height]))::before {
     content: "Есть изображения без атрибута height";
+    counter-increment: debug-counter;
 }
 
 :has(>img:not([alt]))::before {
     content: "Есть изображения без атрибута alt";
+    counter-increment: debug-counter;
 }
 
 ::before {
     position: absolute !important;
-    top: 0;
-    left: 0;
-    right: unset;
-    bottom: unset;
-    z-index: 9999;
-    font: 16px/1.5 monospace, monospace;
-    display: block;
-    border: var(--debug-width) solid var(--debug-color);
-    padding: .5em 1em;
-    color: black;
-    background-color: #f88;
-    white-space: nowrap;
+    top: 0 !important;
+    left: 0 !important;
+    right: unset !important;
+    bottom: unset !important;
+    z-index: 100002 !important;
+    font: 16px/1.5 monospace, monospace !important;
+    display: block !important;
+    border: var(--debug-width) solid var(--debug-color) !important;
+    padding: .5em 1em !important;
+    color: black !important;
+    background-color: #f88 !important;
+    white-space: nowrap !important;
+    transform: translateZ(0) !important;
+}
+
+html::after {
+    content: 'Обнаружено ошибок: ' counter(debug-counter);
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    translate: -50% -50% !important;
+    right: unset !important;
+    bottom: unset !important;
+    z-index: 100003 !important;
+    font: 32px/1.5 monospace, monospace !important;
+    display: block !important;
+    border: var(--debug-width) solid var(--debug-color) !important;
+    padding: .5em 1em !important;
+    color: black !important;
+    background-color: #f88 !important;
+    white-space: nowrap !important;
+    transform: translateZ(0) !important;
+    animation: debuganim 1s forwards 1.5s !important;
+    box-shadow: 0 0 0 200vw #0008 !important;
+}
+
+@keyframes debuganim {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        scale: 0;
+    }
 }
