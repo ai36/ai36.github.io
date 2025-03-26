@@ -29,17 +29,12 @@ head script[src]:not([defer]):not([type="module"])::before {
     counter-increment: debug-counter;
 }
 
-html:not(:has(head > link[rel~=icon]))::before {
-    content: "В документе остутсвует favicon";
-    counter-increment: debug-counter;
-}
-
 a[target="_blank"]:is(:not([rel~="noopener"]), :not([rel~="noreferrer"]))::before {
     content: "Добавьте к ссылке на внешний документ атрибут rel='noopener noreferrer'";
     counter-increment: debug-counter;
 }
 
-html:not(:has(head > link[rel=icon]))::before {
+html:not(:has(head > link[rel~=icon]))::before {
     content: "В документе остутсвует favicon";
     counter-increment: debug-counter;
 }
