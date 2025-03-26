@@ -9,7 +9,7 @@
 
 head script[src]:not([defer]):not([type="module"]),
 a[target="_blank"]:is(:not([rel~="noopener"]), :not([rel~="noreferrer"])),
-html:not(:has(head > link[rel=icon])),
+html:not(:has(head > link[rel~=icon])),
 section:not(:has(h2)),
 button:not([aria-label]):has(> svg:only-child),
 body:not(:has(h1)),
@@ -29,7 +29,7 @@ head script[src]:not([defer]):not([type="module"])::before {
     counter-increment: debug-counter;
 }
 
-html:not(:has(head > link[rel=icon]))::before {
+html:not(:has(head > link[rel~=icon]))::before {
     content: "В документе остутсвует favicon";
     counter-increment: debug-counter;
 }
