@@ -1,21 +1,94 @@
 :root {
-    --outline: 4px dotted red;
-    --outline-offset: 2px;
+    --debug-width: 4px;
+    --debug-style: solid;
+    --debug-color: red;
 }
 
-
-/* button:not([aria-label]):has(> svg:only-child),
-html:not([lang=ru]),
+head script[src]:not([defer]):not([type="module"]),
+a[target="_blank"]:is(:not([rel~="noopener"]), :not([rel~="noreferrer"])),
+html:not(:has(head > link[rel=icon])),
+section:not(:has(h2)),
+button:not([aria-label]):has(> svg:only-child),
 body:has(:not(h1)),
 button:not([type]),
-img:not([alt]),
+html:not([lang=ru]),
+time:not([datetime]),
 img:not([width]),
-img:not([height]), */
-time:not([date-time]) {
-    outline: var(--outline);
-    outline-offset: var(--outline-offset);
+img:not([height]),
+img:not([alt]) {
+    outline: var(--debug-width) var(--debug-style) var(--debug-color);
+    outline-offset: calc(-1 * var(--debug-width));
+    position: relative !important;
+}
+
+head script[src]:not([defer]):not([type="module"])::before {
+    content: "В секции head подключены ресурсы блокирующие рендеринг, рекомендуется использовать атрибут defer";
+}
+
+html:not(:has(head > link[rel=icon]))::before {
+    content: "В документе остутсвует favicon";
+}
+
+a[target="_blank"]:is(:not([rel~="noopener"]), :not([rel~="noreferrer"]))::before {
+    content: "Добавьте к ссылке на внешний документ атрибут rel='noopener noreferrer'";
+}
+
+html:not(:has(head > link[rel=icon]))::before {
+    content: "В документе остутсвует favicon";
+}
+
+section:not(:has(h2))::before {
+    content: "Секция не имеет заголовка h2";
+}
+
+button:not([aria-label]):has(> svg:only-child)::before {
+    content: "Кнопка не имеет текстового содержимого или доступного описания";
+}
+
+body:has(:not(h1))::before {
+    content: "Документ не имеет тега h1";
+}
+
+button:not([type])::before {
+    content: "Кнопка не имеет атрибута type";
+}
+
+html:not([lang=ru])::before {
+    content: "Атрибурт html lang содепржит значение отличное от ru";
+}
+
+time:not([datetime])::before {
+    content: "Использование тега time без атрибута datatime";
+}
+
+:has(>img:not([width]))::before {
+    content: "Есть изображения без атрибута height";
+}
+
+:has(>img:not([height]))::before {
+    content: "Есть изображения без атрибута height";
+}
+
+:has(>img:not([alt]))::before {
+    content: "Есть изображения без атрибута alt";
+}
+
+::before {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    right: unset;
+    bottom: unset;
+    z-index: 9999;
+    font: 16px/1.5 monospace, monospace;
+    display: block;
+    border: var(--debug-width) solid var(--debug-color);
+    padding: .5em 1em;
+    color: black;
+    background-color: #f88;
+    white-space: nowrap;
 }
 
 /*
-javascript:(function()%7Bconst ct%3Ddocument.createElement(%27link%27)%3bct.rel%3D%27stylesheet%27%3Bct.href%3D%27https://ai36.github.io/debug.css%27%3Bct.classList.add(%27ct%27)%3Bdocument.head.appendChild(ct)%3B%7D())%3B%3B
+
 */
