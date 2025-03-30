@@ -26,7 +26,7 @@ javascript:(function()%7Bconst%20ct%3Ddocument.createElement(%27link%27)%3Bct.re
 
 **Александру Ламкову** за идею подстветки ошибкок с помощью CSS\
 **Garry Roberts** за идею механизма запуска дебага\
-**Вадиму Маличу** из интересный проект стажировки https://preax.ru
+**Вадиму Малычу** из интересный проект стажировки https://preax.ru
 
 
 
