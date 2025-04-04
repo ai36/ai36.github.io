@@ -11,7 +11,7 @@ head script[src]:not([defer]):not([type="module"]),
 a[target="_blank"]:is(:not([rel~="noopener"]), :not([rel~="noreferrer"])),
 html:not(:has(head > link[rel~=icon])),
 section:not(:has(h2)),
-button:not([aria-label]):has(> svg:only-child),
+button:not([aria-label]):has(> svg):not(:has(:not(svg))),
 body:not(:has(h1)),
 button:not([type]),
 html:not([lang=ru]),
@@ -44,7 +44,7 @@ section:not(:has(h2))::before {
     counter-increment: debug-counter;
 }
 
-button:not([aria-label]):has(> svg:only-child)::before {
+button:not([aria-label]):has(> svg):not(:has(:not(svg)))::before {
     content: "Кнопка не имеет текстового содержимого или доступного описания";
     counter-increment: debug-counter;
 }
