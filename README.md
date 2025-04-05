@@ -9,7 +9,7 @@
 
 Создать в избранном браузера закладку, в поле ссылки которой добавить следующую строчку:
 
-```
+```javascript
 javascript:(function()%7Bconst%20ct%3Ddocument.createElement(%27link%27)%3Bct.rel%3D%27stylesheet%27%3Bct.href%3D%27https%3A%2F%2Fai36.github.io%2Fdebug.css%3Ft%3D%27%2BDate.now()%3Bct.classList.add(%27ct%27)%3Bdocument.head.appendChild(ct)%3B%7D)()%3B
 ```
 
