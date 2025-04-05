@@ -7,6 +7,8 @@
     counter-reset: debug-counter;
 }
 
+html:has(img[src*=".webp"], img[src*=".avif"]):not(:has([srcset*=".jpg"], [srcset*=".jpeg"], [srcset*=".png"])),
+html:has(img[src*=".jpg"], img[src*=".jpeg"]):not(:has(img[src*=".webp"], img[src*=".avif"], [srcset*=".webp"], [srcset*=".avif"])),
 head script[src]:not([defer]):not([type="module"]),
 a[target="_blank"]:is(:not([rel~="noopener"]), :not([rel~="noreferrer"])),
 html:not(:has(head > link[rel~=icon])),
@@ -22,6 +24,16 @@ img:not([alt]) {
     outline: var(--debug-width) var(--debug-style) var(--debug-color);
     outline-offset: calc(-1 * var(--debug-width));
     position: relative !important;
+}
+
+html:has(img[src*=".webp"], img[src*=".avif"]):not(:has([srcset*=".jpg"], [srcset*=".jpeg"], [srcset*=".png"]))::before {
+    content: "Используются современные форматы изображений - webp и/или avif без фолбэка на jpg или png";
+    counter-increment: debug-counter;
+}
+
+html:has(img[src*=".jpg"], img[src*=".jpeg"]):not(:has(img[src*=".webp"], img[src*=".avif"], [srcset*=".webp"], [srcset*=".avif"]))::before {
+    content: "Используйте современные форматы изображений - webp и/или avif";
+    counter-increment: debug-counter;
 }
 
 head script[src]:not([defer]):not([type="module"])::before {
