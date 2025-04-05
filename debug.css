@@ -115,7 +115,7 @@ time:not([datetime])::before {
     transition: .2s !important;
 }
 
-:hover::before {
+:not(html, body):hover::before {
     opacity: .4 !important;
 }
 
