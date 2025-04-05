@@ -25,12 +25,12 @@ img:not([alt]) {
 }
 
 head script[src]:not([defer]):not([type="module"])::before {
-    content: "В секции head подключены ресурсы блокирующие рендеринг, рекомендуется использовать атрибут defer";
+    content: "В секции head подключены js-ресурсы блокирующие рендеринг, рекомендуется использовать атрибут defer";
     counter-increment: debug-counter;
 }
 
 a[target="_blank"]:is(:not([rel~="noopener"]), :not([rel~="noreferrer"]))::before {
-    content: "Добавьте к ссылке на внешний документ атрибут rel='noopener noreferrer'";
+    content: "Добавьте к ссылке " attr(class) " на внешний документ атрибут rel='noopener noreferrer'";
     counter-increment: debug-counter;
 }
 
@@ -40,12 +40,12 @@ html:not(:has(head > link[rel~=icon]))::before {
 }
 
 section:not(:has(h2))::before {
-    content: "Секция не имеет заголовка h2";
+    content: "Секция " attr(class) " не имеет заголовка h2";
     counter-increment: debug-counter;
 }
 
 button:not([aria-label]):has(> svg):not(:has(:not(svg)))::before {
-    content: "Кнопка не имеет текстового содержимого или доступного описания";
+    content: "Кнопка " attr(class) " не имеет текстового содержимого или доступного описания";
     counter-increment: debug-counter;
 }
 
@@ -55,12 +55,12 @@ body:not(:has(h1))::before {
 }
 
 button:not([type])::before {
-    content: "Кнопка не имеет атрибута type";
+    content: "Кнопка " attr(class) " не имеет атрибута type";
     counter-increment: debug-counter;
 }
 
 html:not([lang=ru])::before {
-    content: "Атрибурт html lang содепржит значение отличное от ru";
+    content: "Атрибурт html lang содержит значение отличное от ru";
     counter-increment: debug-counter;
 }
 
@@ -70,17 +70,17 @@ time:not([datetime])::before {
 }
 
 :has(>img:not([width]))::before {
-    content: "Есть изображения без атрибута height";
+    content: "Изображение " attr(class) " без атрибута height";
     counter-increment: debug-counter;
 }
 
 :has(>img:not([height]))::before {
-    content: "Есть изображения без атрибута height";
+    content: "Изображение " attr(class) " без атрибута height";
     counter-increment: debug-counter;
 }
 
 :has(>img:not([alt]))::before {
-    content: "Есть изображения без атрибута alt";
+    content: "Изображение " attr(class) " без атрибута alt";
     counter-increment: debug-counter;
 }
 
