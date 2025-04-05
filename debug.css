@@ -21,8 +21,8 @@ time:not([datetime]),
 img:not([width]),
 img:not([height]),
 img:not([alt]) {
-    outline: var(--debug-width) var(--debug-style) var(--debug-color);
-    outline-offset: calc(-1 * var(--debug-width));
+    outline: var(--debug-width) var(--debug-style) var(--debug-color) !important;;
+    outline-offset: calc(-1 * var(--debug-width)) !important;;
     position: relative !important;
 }
 
@@ -111,6 +111,12 @@ time:not([datetime])::before {
     background-color: #f88 !important;
     white-space: nowrap !important;
     transform: translateZ(0) !important;
+    text-transform: full-size-kana !important;
+    transition: .2s !important;
+}
+
+:hover::before {
+    opacity: .4 !important;
 }
 
 html::after {
@@ -132,6 +138,7 @@ html::after {
     transform: translateZ(0) !important;
     animation: debuganim 1s forwards 1.5s !important;
     box-shadow: 0 0 0 200vw #0008 !important;
+    text-transform: full-size-kana !important;
 }
 
 @keyframes debuganim {
