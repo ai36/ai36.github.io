@@ -82,7 +82,7 @@ time:not([datetime])::before {
 }
 
 :has(>img:not([width]))::before {
-    content: "Изображение " attr(class) " без атрибута height";
+    content: "Изображение " attr(class) " без атрибута width";
     counter-increment: debug-counter;
 }
 
