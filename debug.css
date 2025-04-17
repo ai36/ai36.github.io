@@ -27,7 +27,7 @@ img:not([alt]) {
     position: relative !important;
 }
 
-:has(>img:not([alt^=" "][alt$=" "]))::before {
+:has(>img[alt^=" "][alt$=" "])::before {
     content: "Изображение " attr(class) " имеет атрибут alt, предположительно содержащий только пробелы";
     counter-increment: debug-counter;
 }
