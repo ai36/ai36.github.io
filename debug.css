@@ -7,6 +7,7 @@
     counter-reset: debug-counter;
 }
 
+img[alt^=" "][alt$=" "],
 html:has(img[src*=".webp"], img[src*=".avif"]):not(:has([srcset*=".jpg"], [srcset*=".jpeg"], [srcset*=".png"])),
 html:has(img[src*=".jpg"], img[src*=".jpeg"]):not(:has(img[src*=".webp"], img[src*=".avif"], [srcset*=".webp"], [srcset*=".avif"])),
 head script[src]:not([defer]):not([type="module"]),
@@ -24,6 +25,11 @@ img:not([alt]) {
     outline: var(--debug-width) var(--debug-style) var(--debug-color) !important;;
     outline-offset: calc(-1 * var(--debug-width)) !important;;
     position: relative !important;
+}
+
+:has(>img:not([alt^=" "][alt$=" "]))::before {
+    content: "Изображение " attr(class) " имеет атрибут alt, предположительно содержащий только пробелы";
+    counter-increment: debug-counter;
 }
 
 html:has(img[src*=".webp"], img[src*=".avif"]):not(:has([srcset*=".jpg"], [srcset*=".jpeg"], [srcset*=".png"]))::before {
