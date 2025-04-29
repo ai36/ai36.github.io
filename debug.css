@@ -7,6 +7,7 @@
     counter-reset: debug-counter;
 }
 
+:where([class="undefined"],[class^="undefined "],[class$=" undefined"],[class*=" undefined "]),
 a:not([href]),
 img[alt^=" "][alt$=" "],
 html:has(img[src*=".webp"], img[src*=".avif"]):not(:has([srcset*=".jpg"], [srcset*=".jpeg"], [srcset*=".png"])),
@@ -26,6 +27,11 @@ img:not([alt]) {
     outline: var(--debug-width) var(--debug-style) var(--debug-color) !important;;
     outline-offset: calc(-1 * var(--debug-width)) !important;;
     position: relative !important;
+}
+
+:where([class="undefined"],[class^="undefined "],[class$=" undefined"],[class*=" undefined "])::before {
+    content: "Обнаружен класс undefined у элемента";
+    counter-increment: debug-counter;
 }
 
 a:not([href])::before {
