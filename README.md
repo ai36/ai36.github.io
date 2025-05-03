@@ -2,7 +2,7 @@
 
 
 - [Debug Snippet](https://github.com/ai36/ai36.github.io?tab=readme-ov-file#debug-snippet)
-- [Debug Pixel-Perfect](https://github.com/ai36/ai36.github.io?tab=readme-ov-file#debug-pp-js)
+- [Debug Pixel-Perfect](https://github.com/ai36/ai36.github.io?tab=readme-ov-file#debug-pixel-perfect-debug-ppjs)
 
 
 ## Debug Snippet
@@ -187,7 +187,7 @@ export function Component() {
 document.querySelectorAll("*").forEach((el) => {
   const { width, height } = el.getBoundingClientRect();
   if ((width % 1 !== 0 || height % 1 !== 0) && el.childElementCount === 0 && !el.closest("svg")) {
-    console.log(el, "\n", { width, height }, "\n\n");
+    console.log(el, { width, height });
   }
 });
 ```
@@ -195,7 +195,7 @@ document.querySelectorAll("*").forEach((el) => {
 Для удобства можно создать закладку в избранном браузера, в поле ссылки которой добавить следующую строчку:
 
 ```javascript
-javascript:document.querySelectorAll("*").forEach((el)%20=>%20{%0A%20%20const%20{%20width,%20height%20}%20=%20el.getBoundingClientRect();%0A%20%20if%20((width%20%%201%20!==%200%20||%20height%20%%201%20!==%200)%20&&%20el.childElementCount%20===%200%20&&%20!el.closest(%22svg%22))%20{%0A%20%20%20%20console.log(el,%20%22\\n%22,%20{%20width,%20height%20},%20%22\\n\\n%22);%0A%20%20}%0A});
+javascript:document.querySelectorAll("*").forEach((el)%20=>%20{%0A%20%20const%20{%20width,%20height%20}%20=%20el.getBoundingClientRect();%0A%20%20if%20((width%20%%201%20!==%200%20||%20height%20%%201%20!==%200)%20&&%20el.childElementCount%20===%200%20&&%20!el.closest(%22svg%22))%20{%0A%20%20%20%20console.log(el,%20{%20width,%20height%20});%0A%20%20}%0A});
 ```
 
 ### Использование
