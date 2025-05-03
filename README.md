@@ -2,7 +2,7 @@
 
 
 - [Debug Snippet](https://github.com/ai36/ai36.github.io?tab=readme-ov-file#debug-snippet)
-- [Debug Pixel-Perfect](https://github.com/ai36/ai36.github.io?tab=readme-ov-file#debug-pp-js)
+- [Debug Pixel-Perfect](https://github.com/ai36/ai36.github.io?tab=readme-ov-file#debug-pixel-perfect-debug-ppjs)
 
 
 ## Debug Snippet
