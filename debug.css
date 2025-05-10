@@ -7,10 +7,14 @@
     counter-reset: debug-counter;
 }
 
+[style],
+:where([class="null"],[class^="null "],[class$=" null"],[class*=" null "]),
+:where([class="false"],[class^="false "],[class$=" false"],[class*=" false "]),
+:where([class="true"],[class^="true "],[class$=" true"],[class*=" true "]),
+:where([class="object"],[class^="object "],[class$=" object"],[class*=" object "]),
 /* 
 :is(a[href], button, input:not([type="hidden"]), select, textarea, label, details, summary, iframe, embed, audio[controls], video[controls], object, keygen, [tabindex], [role="button"], [role="link"], [role="checkbox"], [role="radio"], [role="switch"], [role="tab"], [role="menuitem"], [role="option"], [role="listbox"], [role="slider"], [role="spinbutton"], [role="textbox"]):has(:is(a[href], button, input:not([type="hidden"]), select, textarea, label, details, summary, iframe, embed, audio[controls], video[controls], object, keygen, [tabindex], [role="button"], [role="link"], [role="checkbox"], [role="radio"], [role="switch"], [role="tab"], [role="menuitem"], [role="option"], [role="listbox"], [role="slider"], [role="spinbutton"], [role="textbox"])), ul > :not(li, script, template), ol > :not(li, script, template), dl > :not(dt):not(dd):not(script):not(template), p > :is(address, article, aside, blockquote, details, div, dl, fieldset, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, main, nav, ol, p, pre, section, table, ul), main main, header header, footer footer, a a, button button, a button, button a, a input:not([type="hidden"]), input:not([type="hidden"]) a, a select, select a, a textarea, textarea a, a label, label a, a details, details a, a summary, summary a, a iframe, iframe a, a embed, embed a, a audio[controls], audio[controls] a, a video[controls], video[controls] a, a object, object a, a keygen, keygen a, a [tabindex], [tabindex] a, a [role="button"], [role="button"] a, a [role="link"], [role="link"] a, a [role="checkbox"], [role="checkbox"] a, a [role="radio"], [role="radio"] a, a [role="switch"], [role="switch"] a, a [role="tab"], [role="tab"] a, a [role="menuitem"], [role="menuitem"] a, a [role="option"], [role="option"] a, a [role="listbox"], [role="listbox"] a, a [role="slider"], [role="slider"] a, a [role="spinbutton"], [role="spinbutton"] a, a [role="textbox"], [role="textbox"] a,
  */
-
 :where(button):has(:where(a, button, input:not([type="hidden"]), select, textarea, label, details, summary, iframe, embed, audio[controls], video[controls], object, keygen, [tabindex])),
 :where(a[href]):has(:where(a, button, input:not([type="hidden"]), select, textarea, label, details, summary, iframe, embed, audio[controls], video[controls], object, keygen, [tabindex])),
 :where(header, footer, main):has(:where(header, footer, main)),
@@ -36,10 +40,35 @@ img:not([alt]) {
     position: relative !important;
 }
 
+[style]::before {
+    content: "Обнаружено использование inline CSS у элемента " attr(class);
+    counter-increment: debug-counter;
+}
+
+:where([class="null"],[class^="null "],[class$=" null"],[class*=" null "])::before {
+    content: "Обнаружен класс null у элемента";
+    counter-increment: debug-counter;
+}
+
+:where([class="false"],[class^="false "],[class$=" false"],[class*=" false "])::before {
+    content: "Обнаружен класс false у элемента";
+    counter-increment: debug-counter;
+}
+
+:where([class="true"],[class^="true "],[class$=" true"],[class*=" true "])::before {
+    content: "Обнаружен класс true у элемента";
+    counter-increment: debug-counter;
+}
+
+:where([class="object"],[class^="object "],[class$=" object"],[class*=" object "])::before {
+    content: "Обнаружен класс object у элемента";
+    counter-increment: debug-counter;
+}
+
 /*
  :is(select, textarea, label, details, summary, iframe, embed, audio[controls], video[controls], object, keygen, [tabindex], [role="button"], [role="link"], [role="checkbox"], [role="radio"], [role="switch"], [role="tab"], [role="menuitem"], [role="option"], [role="listbox"], [role="slider"], [role="spinbutton"], [role="textbox"]):has(:is(a[href], button, input:not([type="hidden"]), select, textarea, label, details, summary, iframe, embed, audio[controls], video[controls], object, keygen, [tabindex], [role="button"], [role="link"], [role="checkbox"], [role="radio"], [role="switch"], [role="tab"], [role="menuitem"], [role="option"], [role="listbox"], [role="slider"], [role="spinbutton"], [role="textbox"]))::before,
 ul > :not(li, script, template)::before, ol > :not(li, script, template)::before, dl > :not(dt):not(dd):not(script):not(template)::before, p > :is(address, article, aside, blockquote, details, div, dl, fieldset, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, main, nav, ol, p, pre, section, table, ul)::before,
-main main::before, header header::before, footer footer::before, a a::before, button button::before, a button::before, button a::before, a input:not([type="hidden"])::before, input:not([type="hidden"]) a::before, a select::before, select a::before, a textarea::before, textarea a::before, a label::before, label a::before, a details::before, details a::before, a summary::before, summary a::before, a iframe::before, iframe a::before, a embed::before, embed a::before, a audio[controls]::before, audio[controls] a::before, a video[controls]::before, video[controls] a::before, a object::before, object a::before, a keygen::before, keygen a::before,
+select a::before, textarea a::before, a label::before, label a::before, a details::before, details a::before, a summary::before, summary a::before, a iframe::before, iframe a::before, a embed::before, embed a::before, a audio[controls]::before, audio[controls] a::before, a video[controls]::before, video[controls] a::before, a object::before, object a::before, a keygen::before, keygen a::before,
 a [tabindex]::before, [tabindex] a::before, a [role="button"]::before, [role="button"] a::before, a [role="link"]::before, [role="link"] a::before, a [role="checkbox"]::before, [role="checkbox"] a::before, a [role="radio"]::before, [role="radio"] a::before, a [role="switch"]::before, [role="switch"] a::before, a [role="tab"]::before, [role="tab"] a::before, a [role="menuitem"]::before, [role="menuitem"] a::before, a [role="option"]::before, [role="option"] a::before, a [role="listbox"]::before, [role="listbox"] a::before, a [role="slider"]::before, [role="slider"] a::before, a [role="spinbutton"]::before, [role="spinbutton"] a::before, a [role="textbox"]::before, [role="textbox"] a::before {
  */
 
