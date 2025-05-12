@@ -1,4 +1,3 @@
-
 :root {
     --debug-width: 4px;
     --debug-style: solid;
@@ -8,17 +7,14 @@
 }
 
 [style],
-:where([class="null"],[class^="null "],[class$=" null"],[class*=" null "]),
-:where([class="false"],[class^="false "],[class$=" false"],[class*=" false "]),
-:where([class="true"],[class^="true "],[class$=" true"],[class*=" true "]),
-:where([class="object"],[class^="object "],[class$=" object"],[class*=" object "]),
-/* 
-:is(a[href], button, input:not([type="hidden"]), select, textarea, label, details, summary, iframe, embed, audio[controls], video[controls], object, keygen, [tabindex], [role="button"], [role="link"], [role="checkbox"], [role="radio"], [role="switch"], [role="tab"], [role="menuitem"], [role="option"], [role="listbox"], [role="slider"], [role="spinbutton"], [role="textbox"]):has(:is(a[href], button, input:not([type="hidden"]), select, textarea, label, details, summary, iframe, embed, audio[controls], video[controls], object, keygen, [tabindex], [role="button"], [role="link"], [role="checkbox"], [role="radio"], [role="switch"], [role="tab"], [role="menuitem"], [role="option"], [role="listbox"], [role="slider"], [role="spinbutton"], [role="textbox"])), ul > :not(li, script, template), ol > :not(li, script, template), dl > :not(dt):not(dd):not(script):not(template), p > :is(address, article, aside, blockquote, details, div, dl, fieldset, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, main, nav, ol, p, pre, section, table, ul), main main, header header, footer footer, a a, button button, a button, button a, a input:not([type="hidden"]), input:not([type="hidden"]) a, a select, select a, a textarea, textarea a, a label, label a, a details, details a, a summary, summary a, a iframe, iframe a, a embed, embed a, a audio[controls], audio[controls] a, a video[controls], video[controls] a, a object, object a, a keygen, keygen a, a [tabindex], [tabindex] a, a [role="button"], [role="button"] a, a [role="link"], [role="link"] a, a [role="checkbox"], [role="checkbox"] a, a [role="radio"], [role="radio"] a, a [role="switch"], [role="switch"] a, a [role="tab"], [role="tab"] a, a [role="menuitem"], [role="menuitem"] a, a [role="option"], [role="option"] a, a [role="listbox"], [role="listbox"] a, a [role="slider"], [role="slider"] a, a [role="spinbutton"], [role="spinbutton"] a, a [role="textbox"], [role="textbox"] a,
- */
+:where([class="null"], [class^="null "], [class$=" null"], [class*=" null "]),
+:where([class="false"], [class^="false "], [class$=" false"], [class*=" false "]),
+:where([class="true"], [class^="true "], [class$=" true"], [class*=" true "]),
+:where([class="object"], [class^="object "], [class$=" object"], [class*=" object "]),
 :where(button):has(:where(a, button, input:not([type="hidden"]), select, textarea, label, details, summary, iframe, embed, audio[controls], video[controls], object, keygen, [tabindex])),
 :where(a[href]):has(:where(a, button, input:not([type="hidden"]), select, textarea, label, details, summary, iframe, embed, audio[controls], video[controls], object, keygen, [tabindex])),
-:where(header, footer, main):has(:where(header, footer, main)),
-:where([class="undefined"],[class^="undefined "],[class$=" undefined"],[class*=" undefined "]),
+:where(header, footer):has(:where(header, footer)),
+:where([class="undefined"], [class^="undefined "], [class$=" undefined"], [class*=" undefined "]),
 a:not([href]),
 img[alt^=" "][alt$=" "],
 html:has(img[src*=".webp"], img[src*=".avif"]):not(:has([srcset*=".jpg"], [srcset*=".jpeg"], [srcset*=".png"])),
@@ -35,58 +31,52 @@ time:not([datetime]),
 img:not([width]),
 img:not([height]),
 img:not([alt]) {
-    outline: var(--debug-width) var(--debug-style) var(--debug-color) !important;;
-    outline-offset: calc(-1 * var(--debug-width)) !important;;
+    outline: var(--debug-width) var(--debug-style) var(--debug-color) !important;
+    outline-offset: calc(-1 * var(--debug-width)) !important;
     position: relative !important;
 }
 
 [style]::before {
-    content: "Обнаружено использование inline CSS у элемента " attr(class);
+    content: "Обнаружено использование inline-CSS у элемента " attr(class);
     counter-increment: debug-counter;
 }
 
-:where([class="null"],[class^="null "],[class$=" null"],[class*=" null "])::before {
+:where([class="null"], [class^="null "], [class$=" null"], [class*=" null "])::before {
     content: "Обнаружен класс null у элемента";
     counter-increment: debug-counter;
 }
 
-:where([class="false"],[class^="false "],[class$=" false"],[class*=" false "])::before {
+:where([class="false"], [class^="false "], [class$=" false"], [class*=" false "])::before {
     content: "Обнаружен класс false у элемента";
     counter-increment: debug-counter;
 }
 
-:where([class="true"],[class^="true "],[class$=" true"],[class*=" true "])::before {
+:where([class="true"], [class^="true "], [class$=" true"], [class*=" true "])::before {
     content: "Обнаружен класс true у элемента";
     counter-increment: debug-counter;
 }
 
-:where([class="object"],[class^="object "],[class$=" object"],[class*=" object "])::before {
+:where([class="object"], [class^="object "], [class$=" object"], [class*=" object "])::before {
     content: "Обнаружен класс object у элемента";
     counter-increment: debug-counter;
 }
 
-/*
- :is(select, textarea, label, details, summary, iframe, embed, audio[controls], video[controls], object, keygen, [tabindex], [role="button"], [role="link"], [role="checkbox"], [role="radio"], [role="switch"], [role="tab"], [role="menuitem"], [role="option"], [role="listbox"], [role="slider"], [role="spinbutton"], [role="textbox"]):has(:is(a[href], button, input:not([type="hidden"]), select, textarea, label, details, summary, iframe, embed, audio[controls], video[controls], object, keygen, [tabindex], [role="button"], [role="link"], [role="checkbox"], [role="radio"], [role="switch"], [role="tab"], [role="menuitem"], [role="option"], [role="listbox"], [role="slider"], [role="spinbutton"], [role="textbox"]))::before,
-ul > :not(li, script, template)::before, ol > :not(li, script, template)::before, dl > :not(dt):not(dd):not(script):not(template)::before, p > :is(address, article, aside, blockquote, details, div, dl, fieldset, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, main, nav, ol, p, pre, section, table, ul)::before,
-select a::before, textarea a::before, a label::before, label a::before, a details::before, details a::before, a summary::before, summary a::before, a iframe::before, iframe a::before, a embed::before, embed a::before, a audio[controls]::before, audio[controls] a::before, a video[controls]::before, video[controls] a::before, a object::before, object a::before, a keygen::before, keygen a::before,
-a [tabindex]::before, [tabindex] a::before, a [role="button"]::before, [role="button"] a::before, a [role="link"]::before, [role="link"] a::before, a [role="checkbox"]::before, [role="checkbox"] a::before, a [role="radio"]::before, [role="radio"] a::before, a [role="switch"]::before, [role="switch"] a::before, a [role="tab"]::before, [role="tab"] a::before, a [role="menuitem"]::before, [role="menuitem"] a::before, a [role="option"]::before, [role="option"] a::before, a [role="listbox"]::before, [role="listbox"] a::before, a [role="slider"]::before, [role="slider"] a::before, a [role="spinbutton"]::before, [role="spinbutton"] a::before, a [role="textbox"]::before, [role="textbox"] a::before {
- */
-
 :where(button):has(:where(a, button, input:not([type="hidden"]), select, textarea, label, details, summary, iframe, embed, audio[controls], video[controls], object, keygen, [tabindex]))::before {
-    content: "Обнаружена ошибка вложенности html-элементов в элемент <button>";
+    content: "Обнаружена ошибка вложенности интерактивных html-элементов в элемент <button>";
     counter-increment: debug-counter;
 }
+
 :where(a[href]):has(:where(a, button, input:not([type="hidden"]), select, textarea, label, details, summary, iframe, embed, audio[controls], video[controls], object, keygen, [tabindex]))::before {
-    content: "Обнаружена ошибка вложенности html-элементов в элемент <a>";
+    content: "Обнаружена ошибка вложенности интерактивных html-элементов в элемент <a>";
     counter-increment: debug-counter;
 }
 
-:where(header, footer, main):has(:where(header, footer, main))::before {
-  content: "Обнаружена ошибка вложенности html-элементов <header>, <footer> или <main>";
-  counter-increment: debug-counter;
+:where(header, footer):has(:where(header, footer))::before {
+    content: "Обнаружена ошибка вложенности html-элементов <header> и/или <footer>";
+    counter-increment: debug-counter;
 }
 
-:where([class="undefined"],[class^="undefined "],[class$=" undefined"],[class*=" undefined "])::before {
+:where([class="undefined"], [class^="undefined "], [class$=" undefined"], [class*=" undefined "])::before {
     content: "Обнаружен класс undefined у элемента";
     counter-increment: debug-counter;
 }
@@ -112,7 +102,7 @@ html:has(img[src*=".jpg"], img[src*=".jpeg"]):not(:has(img[src*=".webp"], img[sr
 }
 
 head script[src]:not([defer]):not([type="module"])::before {
-    content: "В секции head подключены js-ресурсы блокирующие рендеринг, рекомендуется использовать атрибут defer";
+    content: "В секции <head> подключены js-ресурсы блокирующие рендеринг, рекомендуется использовать атрибут defer или type='module'";
     counter-increment: debug-counter;
 }
 
@@ -127,7 +117,7 @@ html:not(:has(head > link[rel~=icon]))::before {
 }
 
 section:not(:has(h2))::before {
-    content: "Секция " attr(class) " не имеет заголовка h2";
+    content: "Секция " attr(class) " не имеет заголовка <h2>";
     counter-increment: debug-counter;
 }
 
@@ -137,7 +127,7 @@ button:not([aria-label]):has(> svg):not(:has(:not(svg)))::before {
 }
 
 body:not(:has(h1))::before {
-    content: "Документ не имеет тега h1";
+    content: "Документ не имеет тега <h1>";
     counter-increment: debug-counter;
 }
 
@@ -147,12 +137,12 @@ button:not([type])::before {
 }
 
 html:not([lang=ru])::before {
-    content: "Атрибурт html lang содержит значение отличное от ru";
+    content: "Атрибурт lang у тега <html> содержит значение отличное от ru";
     counter-increment: debug-counter;
 }
 
 time:not([datetime])::before {
-    content: "Использование тега time без атрибута datatime";
+    content: "Использование тега <time> без атрибута datatime";
     counter-increment: debug-counter;
 }
 
@@ -181,6 +171,7 @@ time:not([datetime])::before {
     font: 16px/1.5 monospace, monospace !important;
     display: block !important;
     border: var(--debug-width) solid var(--debug-color) !important;
+    border-radius: 0 !important;
     padding: .5em 1em !important;
     color: black !important;
     background-color: #f88 !important;
@@ -206,6 +197,7 @@ html::after {
     font: 32px/1.5 monospace, monospace !important;
     display: block !important;
     border: var(--debug-width) solid var(--debug-color) !important;
+    border-radius: 0 !important;
     padding: .5em 1em !important;
     color: black !important;
     background-color: #f88 !important;
