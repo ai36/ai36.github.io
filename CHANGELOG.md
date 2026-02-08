@@ -1,6 +1,13 @@
 # Change Log
 
 
+## 2025-02-07
+
+### Copy review as Markdown for PREAX
+
+- Добавлен user-скрипт для платформы [preax.ru](https://preax.ru)\
+Установка в браузер через расширение Tampermonkey
+
 ## 2025-05-06
 
 ### Debug Snippet [0.0.13]
