@@ -3,6 +3,7 @@
 
 - [Debug Snippet](https://github.com/ai36/ai36.github.io?tab=readme-ov-file#debug-snippet)
 - [Debug Pixel-Perfect](https://github.com/ai36/ai36.github.io?tab=readme-ov-file#debug-pixel-perfect-debug-ppjs)
+- [Copy review as Markdown for preax.ru](https://github.com/ai36/ai36.github.io?tab=readme-ov-file#copy-review-as-markdown-for-preax)
 
 
 ## Debug Snippet
@@ -259,8 +260,78 @@ Object { width: 526, height: 31.916671752929688 }
 
 
 
-
 <br><br><br><br>
+
+
+## Copy review as Markdown for PREAX
+
+Репозиторий - [https://github.com/ai36/copy-as-md-extension](https://github.com/ai36/copy-as-md-extension)
+
+JS-скрипт (Tampermonkey) для сайта [preax.ru](https://preax.ru), который добавляет кнопку копирования в интерфейс код-ревью и позволяет быстро скопировать отзыв **в формате Markdown**.
+
+Скрипт полезен, если ты:
+- переносишь код-ревью в Markdown-документы / GitHub / GitLab / Notion
+- хочешь сохранить структуру отзыва (плюсы, баги, рекомендации)
+- хочешь, чтобы изображения из код-ревью были сразу доступны из Markdown-документа
+
+---
+
+## 🚀 Возможности
+
+- ➕ Добавляет кнопку **Copy** к блоку код-ревью
+- 🧱 Копирует отзыв целиком в формате Markdown, включая разделы:
+  - `# Плюсы`
+  - `# Баги`
+  - `# Рекомендации`
+- 🖼 Копирует изображения как `![](image_url)`
+
+---
+
+## 📋 Пример результата
+
+```md
+# debugging-1-done (Средняя оценка: 4.3)
+
+## Алексей (frontdev) ⭐⭐⭐⭐⭐
+
+### Плюсы
+Хорошо структурированный код
+
+### Баги
+![](https://example.com/image.png)
+Есть проблема с обработкой ошибок
+
+### Рекомендации
+Добавить тесты
+```
+
+## 🔧 Установка
+
+1. Установи расширение Tampermonkey (Chrome / Edge / Brave / Firefox) и зайди в настройки расширения.
+2. Создай новый userscript в Tampermonkey
+3. Скопируй содержимое файла copy-as-md.user.js в редактор
+4. Сохрани скрипт — он автоматически будет работать на страницах: https://preax.ru/*
+
+
+## 🖱 Как пользоваться
+
+- Открой страницу с код-ревью на Preax
+- Нажми кнопку Copy в правом верхнем углу блока отзыва - Markdown-текст окажется в буфере обмена
+- Далее можно вставить этот md-текст в любой редактор с интерпретацией Markdown-разметки, например в VS-code для запуска просмотра нужно нажать сочетание клавиш CTRL+K и далее клавишу V.
+
+
+## ⚠️ Ограничения
+
+Скрипт жёстко завязан на текущую верстку и React-структуру Preax. Таким образом может перестать работать после обновления раздела Ревью. Разработчики следят за изменениями и по необходимости устранят неполадки.
+
+**Внимание! Не является официальным инструментом Preax**
+
+## 👤 Авторы
+
+Andrei Fedorov (@ai36)\
+Artem Stralenia (@procto_onic)
+
+
 
 
 ## flair.js
