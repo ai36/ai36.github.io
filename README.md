@@ -4,7 +4,7 @@
 - [Debug Snippet](https://github.com/ai36/ai36.github.io?tab=readme-ov-file#debug-snippet)
 - [Debug Pixel-Perfect](https://github.com/ai36/ai36.github.io?tab=readme-ov-file#debug-pixel-perfect-debug-ppjs)
 - [Copy review as Markdown for preax.ru](https://github.com/ai36/ai36.github.io?tab=readme-ov-file#copy-review-as-markdown-for-preax)
-- [Preax image pool for preax.ru](https://github.com/ai36/ai36.github.io?tab=readme-ov-file#preax-image-pool)
+- [Preax image pool for preax.ru](https://github.com/ai36/ai36.github.io?tab=readme-ov-file#preax-image-pool--tampermonkey-userscript)
 
 
 ## Debug Snippet
