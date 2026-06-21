@@ -1,3 +1,8 @@
+/*!
+ * Debug Snippet v0.0.14
+ * https://github.com/ai36/ai36.github.io
+ */
+
 :root {
     --debug-width: 4px;
     --debug-style: solid;
@@ -6,6 +11,14 @@
     counter-reset: debug-counter;
 }
 
+:is(span, em, strong, b, i, u, small, cite, code, kbd, samp, var, abbr, sub, sup, q, s, mark, label, bdi, bdo, button):has(:is(div, p, h1, h2, h3, h4, h5, h6, ul, ol, table, blockquote, pre, section, article, aside, header, footer, main, nav, figure, figcaption, address, dl, details, hr)),
+label:has(input:not([type="hidden"])):has(select),
+label:has(input:not([type="hidden"])):has(textarea),
+label:has(input:not([type="hidden"])):has(button),
+label:has(select):has(textarea),
+label:has(select):has(button),
+label:has(textarea):has(button),
+label:has(:is(input:not([type="hidden"]), select, textarea, button) ~ :is(input:not([type="hidden"]), select, textarea, button)),
 [style],
 :where([class="null"], [class^="null "], [class$=" null"], [class*=" null "]),
 :where([class="false"], [class^="false "], [class$=" false"], [class*=" false "]),
@@ -34,6 +47,22 @@ img:not([alt]) {
     outline: var(--debug-width) var(--debug-style) var(--debug-color) !important;
     outline-offset: calc(-1 * var(--debug-width)) !important;
     position: relative !important;
+}
+
+:is(span, em, strong, b, i, u, small, cite, code, kbd, samp, var, abbr, sub, sup, q, s, mark, label, bdi, bdo, button):has(:is(div, p, h1, h2, h3, h4, h5, h6, ul, ol, table, blockquote, pre, section, article, aside, header, footer, main, nav, figure, figcaption, address, dl, details, hr))::before {
+    content: "Блочный элемент вложен в строчный";
+    counter-increment: debug-counter;
+}
+
+label:has(input:not([type="hidden"])):has(select)::before,
+label:has(input:not([type="hidden"])):has(textarea)::before,
+label:has(input:not([type="hidden"])):has(button)::before,
+label:has(select):has(textarea)::before,
+label:has(select):has(button)::before,
+label:has(textarea):has(button)::before,
+label:has(:is(input:not([type="hidden"]), select, textarea, button) ~ :is(input:not([type="hidden"]), select, textarea, button))::before {
+    content: "Внутри тега <label> обнаружено больше одного интерактивного элемента";
+    counter-increment: debug-counter;
 }
 
 [style]::before {
